@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Brochure | Applied Agentic AI for Business Transformation – University of Birmingham Business School</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #003366;
+    --gold: #B8960C;
+    --gold-light: #E8C84A;
+    --cream: #FAF7F0;
+    --white: #FFFFFF;
+    --grey-light: #F4F4F4;
+    --grey-mid: #E0DDD6;
+    --grey-dark: #555;
+    --text: #1A1A1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    position: relative;
+    height: 100vh;
+    min-height: 680px;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  .cover-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 30%, rgba(184,150,12,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(0,51,102,0.9) 0%, transparent 70%),
+      linear-gradient(135deg, #001a3a 0%, #003366 50%, #004080 100%);
+  }
+  .cover-grid {
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(184,150,12,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,150,12,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .cover-accent {
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 500px; height: 500px;
+    border: 1px solid rgba(184,150,12,0.2);
+    border-radius: 50%;
+  }
+  .cover-accent2 {
+    position: absolute;
+    right: -20px; top: -20px;
+    width: 360px; height: 360px;
+    border: 1px solid rgba(184,150,12,0.12);
+    border-radius: 50%;
+  }
+  .cover-logo-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 28px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(184,150,12,0.3);
+  }
+  .uob-logo {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .uob-logo img.logo-img {
+    height: 50px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+  .logo-divider {
+    width: 1px; height: 44px;
+    background: rgba(184,150,12,0.5);
+  }
+  .logo-text { color: var(--white); }
+  .logo-text .uni { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; letter-spacing: 0.3px; }
+  .logo-text .school { font-size: 11px; color: var(--gold-light); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px; }
+  .cover-tag {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .cover-content {
+    position: relative;
+    padding: 0 60px 70px;
+    z-index: 1;
+  }
+  .cover-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cover-eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px; height: 1px;
+    background: var(--gold);
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  .cover-title span { color: var(--gold-light); }
+  .cover-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    max-width: 520px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .cover-pills {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .pill {
+    padding: 8px 20px;
+    border: 1px solid rgba(184,150,12,0.5);
+    color: var(--gold-light);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .pill.filled {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ── QUOTE BAND ── */
+  .quote-band {
+    background: var(--gold);
+    padding: 50px 60px;
+    display: flex; align-items: flex-start; gap: 30px;
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    line-height: 0.7;
+    color: rgba(0,51,102,0.25);
+    flex-shrink: 0;
+    margin-top: 10px;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .quote-attr {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION STYLES ── */
+  section { padding: 80px 60px; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    flex: 1; max-width: 40px; height: 1px;
+    background: var(--gold);
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  /* ── WHY SECTION ── */
+  .why-section { background: var(--cream); }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--grey-mid);
+    margin-top: 50px;
+    border: 1px solid var(--grey-mid);
+  }
+  .stat-box {
+    background: var(--white);
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--gold);
+    transition: height 0.4s ease;
+  }
+  .stat-box:hover::before { height: 100%; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat-num span { color: var(--gold); }
+  .stat-desc { font-size: 15px; color: var(--grey-dark); line-height: 1.5; margin-bottom: 8px; }
+  .stat-source { font-size: 11px; color: #999; letter-spacing: 0.5px; }
+
+  /* ── ABOUT SECTION ── */
+  .about-section {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .about-section .section-label { color: var(--gold-light); }
+  .about-section .section-label::after { background: var(--gold-light); }
+  .about-section h2.section-title { color: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-text { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.8; }
+  .about-text p + p { margin-top: 16px; }
+  .about-specs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-top: 36px;
+  }
+  .spec-item {
+    border: 1px solid rgba(184,150,12,0.3);
+    padding: 20px;
+    border-radius: 2px;
+  }
+  .spec-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+  .spec-label { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; text-transform: uppercase; }
+  .about-points { list-style: none; }
+  .about-points li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .about-points li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  /* ── OUTCOMES ── */
+  .outcomes-section { background: var(--white); }
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+  .outcome-card {
+    border: 1px solid var(--grey-mid);
+    padding: 32px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .outcome-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+  .outcome-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--grey-mid);
+    line-height: 1;
+    position: absolute;
+    top: 20px; right: 24px;
+  }
+  .outcome-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    padding-right: 40px;
+  }
+  .outcome-desc { font-size: 14px; color: var(--grey-dark); line-height: 1.6; }
+
+  /* ── TAKEAWAYS ── */
+  .takeaways-section { background: var(--grey-light); }
+  .takeaways-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+  }
+  .takeaway-card {
+    background: var(--white);
+    padding: 32px 28px;
+    border-top: 3px solid var(--gold);
+  }
+  .takeaway-icon {
+    width: 42px; height: 42px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+  .takeaway-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .takeaway-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .takeaway-desc { font-size: 14px; color: var(--grey-dark); line-height: 1.6; }
+
+  /* ── PARTICIPANT ── */
+  .participant-section { background: var(--white); }
+  .participant-intro {
+    max-width: 680px;
+    font-size: 17px;
+    color: var(--grey-dark);
+    line-height: 1.7;
+    margin-bottom: 50px;
+  }
+  .participant-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .profile-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid var(--grey-mid);
+    border-radius: 2px;
+  }
+  .profile-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--navy), #0055aa);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .profile-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+  .profile-desc { font-size: 13px; color: var(--grey-dark); line-height: 1.5; }
+  .no-prereq {
+    margin-top: 36px;
+    padding: 24px 28px;
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    font-size: 15px;
+    color: var(--navy);
+  }
+  .no-prereq strong { display: block; margin-bottom: 6px; font-size: 16px; }
+
+  /* ── CURRICULUM ── */
+  .curriculum-section { background: var(--navy); }
+  .curriculum-section .section-label { color: var(--gold-light); }
+  .curriculum-section .section-label::after { background: var(--gold); }
+  .curriculum-section h2.section-title { color: var(--white); }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 50px;
+  }
+  .module-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,150,12,0.2);
+    padding: 28px;
+    transition: background 0.3s;
+  }
+  .module-card:hover { background: rgba(184,150,12,0.07); }
+  .module-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 16px;
+  }
+  .module-num {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    color: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 13px;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+  .module-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .module-topics { list-style: none; }
+  .module-topics li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: flex-start; gap: 10px;
+    line-height: 1.4;
+  }
+  .module-topics li::before {
+    content: '–';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── CERTIFICATE ── */
+  .cert-section {
+    background: var(--white);
+    text-align: center;
+    padding: 80px 60px;
+  }
+  .cert-box {
+    max-width: 700px;
+    margin: 50px auto 0;
+    border: 1px solid var(--grey-mid);
+    padding: 60px 50px;
+    position: relative;
+  }
+  .cert-box::before, .cert-box::after {
+    content: '';
+    position: absolute;
+    width: 40px; height: 40px;
+    border-color: var(--gold);
+    border-style: solid;
+  }
+  .cert-box::before { top: -1px; left: -1px; border-width: 3px 0 0 3px; }
+  .cert-box::after { bottom: -1px; right: -1px; border-width: 0 3px 3px 0; }
+  .cert-logo-crest {
+    width: 64px; height: 70px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; color: var(--navy); font-weight: 900;
+    margin: 0 auto 20px;
+  }
+  .cert-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .cert-desc { font-size: 15px; color: var(--grey-dark); line-height: 1.7; max-width: 520px; margin: 0 auto 20px; }
+  .cert-note { font-size: 12px; color: #aaa; line-height: 1.6; }
+
+  /* ── CORPORATE ── */
+  .corporate-section { background: var(--grey-light); }
+  .corporate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
+  .corp-card {
+    background: var(--white);
+    padding: 32px 28px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .corp-card:hover { border-color: var(--gold); }
+  .corp-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .corp-num span { color: var(--gold); }
+  .corp-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .corp-desc { font-size: 14px; color: var(--grey-dark); line-height: 1.6; }
+
+  /* ── ALUMNI ── */
+  .alumni-section { background: var(--navy); color: var(--white); }
+  .alumni-section .section-label { color: var(--gold-light); }
+  .alumni-section .section-label::after { background: var(--gold); }
+  .alumni-section h2.section-title { color: var(--white); }
+  .alumni-benefits { list-style: none; margin-top: 50px; max-width: 680px; }
+  .alumni-benefits li {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .benefit-num {
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+  .benefit-text { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+  .benefit-text strong { color: var(--white); display: block; margin-bottom: 3px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #001529;
+    padding: 50px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .footer-logo .uni { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--white); font-weight: 700; }
+  .footer-logo .school { font-size: 12px; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+  .footer-contact h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .footer-contact p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+  .footer-contact a { color: var(--gold-light); text-decoration: none; }
+  .footer-cta {
+    display: flex; flex-direction: column; align-items: flex-end; justify-content: center;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 16px 36px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.3s;
+  }
+  .cta-btn:hover { background: var(--gold-light); }
+  .footer-bottom {
+    background: #000d1a;
+    padding: 20px 60px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ── PAGE BREAK HELPERS (print) ── */
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { page-break-after: always; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    section, .cover-logo-bar, .cover-content, footer { padding-left: 30px; padding-right: 30px; }
+    .stats-grid, .outcomes-grid, .takeaways-grid, .participant-grid,
+    .modules-grid, .instructors-grid, .corporate-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .footer-cta { align-items: flex-start; margin-top: 20px; }
+  }
+
+
+  /* ── INTERACTIVE ENHANCEMENTS ── */
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  .progress-bar {
+    position: fixed; top: 0; left: 0; height: 4px; width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    z-index: 9999; transition: width .1s linear;
+  }
+  .sticky-nav {
+    position: fixed; top: 4px; left: 0; right: 0; z-index: 9998;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 34px;
+    background: rgba(0, 28, 56, 0.92);
+    border-bottom: 1px solid rgba(232,200,74,0.25);
+    backdrop-filter: blur(14px);
+    transform: translateY(-120%);
+    transition: transform .35s ease, background .35s ease;
+  }
+  .sticky-nav.visible { transform: translateY(0); }
+  .sticky-brand { display: flex; align-items: center; gap: 12px; color: var(--white); text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: .2px; }
+  .sticky-brand img { height: 34px; width: auto; filter: brightness(0) invert(1); }
+  .nav-links { display: flex; align-items: center; gap: 18px; }
+  .nav-links a { color: rgba(255,255,255,.78); text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: color .2s ease; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-print, .nav-toggle, .mini-btn {
+    border: 1px solid rgba(232,200,74,.65); background: var(--gold); color: var(--navy);
+    padding: 8px 14px; border-radius: 999px; font-weight: 800; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .8px; cursor: pointer; transition: transform .2s ease, background .2s ease;
+  }
+  .nav-print:hover, .nav-toggle:hover, .mini-btn:hover, .hero-btn:hover { transform: translateY(-2px); background: var(--gold-light); }
+  .nav-toggle { display: none; }
+  .cover-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+  .hero-btn {
+    display: inline-flex; align-items: center; justify-content: center; min-height: 44px;
+    padding: 12px 22px; border-radius: 999px; text-decoration: none;
+    font-size: 12px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
+    border: 1px solid rgba(232,200,74,.65); transition: transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .hero-btn.primary { background: var(--gold); color: var(--navy); }
+  .hero-btn.secondary { color: var(--gold-light); background: rgba(255,255,255,.04); }
+  .hero-btn.secondary:hover { color: var(--navy); }
+
+  .interactive-section { background: linear-gradient(180deg, var(--white), var(--cream)); }
+  .interactive-wrapper { display: grid; grid-template-columns: 1.35fr .65fr; gap: 36px; align-items: stretch; }
+  .interactive-copy { max-width: 700px; font-size: 16px; color: var(--grey-dark); line-height: 1.75; }
+  .readiness-actions { display: flex; gap: 12px; margin-top: 24px; }
+  .mini-btn.ghost { background: transparent; color: var(--navy); border-color: var(--gold); }
+  .readiness-card {
+    min-height: 260px; background: var(--navy); color: var(--white); border-radius: 4px;
+    padding: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 22px 48px rgba(0, 28, 56, .18); text-align: center; border: 1px solid rgba(184,150,12,.35);
+  }
+  .score-ring {
+    width: 150px; height: 150px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    background: conic-gradient(var(--gold) 0deg, rgba(255,255,255,.12) 0deg);
+    font-family: 'Playfair Display', serif; color: var(--white); margin-bottom: 18px; position: relative;
+  }
+  .score-ring::before { content: ''; position: absolute; inset: 12px; background: var(--navy); border-radius: 50%; }
+  .score-ring span, .score-ring small { position: relative; z-index: 1; }
+  .score-ring span { font-size: 44px; font-weight: 900; }
+  .score-ring small { color: var(--gold-light); font-size: 16px; margin-left: 2px; }
+  .score-label { font-weight: 800; font-size: 16px; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .score-detail { font-size: 14px; color: rgba(255,255,255,.72); line-height: 1.6; }
+  .check-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+  .check-card {
+    background: var(--white); border: 1px solid var(--grey-mid); padding: 22px; border-radius: 4px;
+    display: flex; gap: 13px; align-items: flex-start; cursor: pointer; min-height: 124px;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .check-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.06); }
+  .check-card input { accent-color: var(--gold); margin-top: 4px; flex-shrink: 0; }
+  .check-card span { font-size: 14px; color: var(--grey-dark); line-height: 1.45; }
+  .check-card.selected { border-color: var(--gold); background: #fffaf0; }
+
+  .module-card { cursor: pointer; border-radius: 4px; }
+  .module-card .module-header { position: relative; padding-right: 104px; }
+  .module-card .module-header::after {
+    content: 'View topics'; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    color: var(--gold-light); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .module-card.open .module-header::after { content: 'Hide topics'; }
+  .module-topics { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .25s ease; }
+  .module-card.open .module-topics { max-height: 520px; opacity: 1; }
+  .module-card:focus-visible, .cta-btn:focus-visible, .hero-btn:focus-visible, .nav-links a:focus-visible, .nav-print:focus-visible, .mini-btn:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
+
+  .reveal-ready { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal-ready.revealed { opacity: 1; transform: translateY(0); }
+  .back-to-top {
+    position: fixed; right: 24px; bottom: 24px; width: 48px; height: 48px; border-radius: 50%;
+    background: var(--gold); color: var(--navy); border: 0; font-weight: 900; cursor: pointer;
+    box-shadow: 0 12px 28px rgba(0,0,0,.2); opacity: 0; pointer-events: none; transform: translateY(10px);
+    transition: opacity .2s ease, transform .2s ease; z-index: 9999;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+  @media (max-width: 1100px) {
+    .check-grid { grid-template-columns: repeat(2, 1fr); }
+    .interactive-wrapper { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) {
+    html { scroll-padding-top: 76px; }
+    .sticky-nav { padding: 10px 20px; }
+    .nav-toggle { display: inline-block; }
+    .nav-links {
+      position: absolute; top: 56px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0;
+      background: rgba(0, 28, 56, .98); padding: 10px 24px 22px; border-bottom: 1px solid rgba(232,200,74,.25);
+      max-height: 0; opacity: 0; overflow: hidden; transition: max-height .3s ease, opacity .2s ease;
+    }
+    .nav-links.open { max-height: 460px; opacity: 1; }
+    .nav-links a, .nav-links button { margin: 8px 0; }
+    .sticky-brand span { display: none; }
+    .check-grid { grid-template-columns: 1fr; }
+    .module-card .module-header { padding-right: 0; padding-bottom: 26px; }
+    .module-card .module-header::after { left: 50px; right: auto; top: auto; bottom: 0; transform: none; }
+  }
+  @media print {
+    .sticky-nav, .progress-bar, .back-to-top, .cover-actions, .readiness-actions { display: none !important; }
+    .module-topics { max-height: none !important; opacity: 1 !important; }
+    .module-card .module-header::after { content: '' !important; }
+  }
+
+
+  /* ── RELIABLE UNIVERSITY OF BIRMINGHAM LOGO ── */
+  .uob-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+  }
+  .uob-mark.logo-panel {
+    background: #003366;
+    border: 1px solid rgba(184,150,12,.35);
+    border-radius: 4px;
+    padding: 8px 12px;
+  }
+  .uob-mark .official-uob-logo {
+    display: block;
+    height: 48px;
+    width: auto;
+    max-width: 260px;
+  }
+  .sticky-brand .official-uob-logo { height: 34px; max-width: 190px; }
+  .cert-section .official-uob-logo { height: 52px; max-width: 280px; }
+  footer .official-uob-logo { height: 44px; max-width: 240px; }
+  .uob-fallback-mark {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    line-height: 1.05;
+  }
+  .uob-fallback-crest {
+    width: 38px;
+    height: 38px;
+    border: 2px solid currentColor;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -1px;
+    flex: 0 0 auto;
+  }
+  .uob-fallback-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    white-space: nowrap;
+  }
+  .uob-fallback-subtext {
+    display: block;
+    font-family: 'Source Sans 3', Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: #E8C84A;
+    margin-top: 3px;
+  }
+  .uob-mark.logo-failed .official-uob-logo { display: none !important; }
+  .uob-mark.logo-failed .uob-fallback-mark { display: inline-flex; }
+  .uob-logo img.logo-img { filter: none; }
+  .sticky-brand { gap: 12px; }
+
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+<nav class="sticky-nav" aria-label="Brochure navigation">
+  <a class="sticky-brand" href="#top" aria-label="University of Birmingham brochure home">
+    <span class="uob-mark logo-panel"><img class="official-uob-logo" src="https://www.birmingham.ac.uk/Images/logos/uob/uob-uk-logo-light.svg" alt="University of Birmingham" onerror="this.closest('.uob-mark').classList.add('logo-failed');"><span class="uob-fallback-mark" aria-label="University of Birmingham"><span class="uob-fallback-crest">UoB</span><span><span class="uob-fallback-text">University of Birmingham</span></span></span></span>
+    <span>Birmingham Business School</span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#why">Why AI</a>
+    <a href="#programme">Programme</a>
+    <a href="#readiness">Readiness Check</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#certificate">Certificate</a>
+    <a href="#contact">Contact</a>
+    <button class="nav-print" id="printBtn" type="button">Save / Print</button>
+  </div>
+</nav>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover" id="top">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-accent"></div>
+  <div class="cover-accent2"></div>
+
+  <div class="cover-logo-bar">
+    <div class="uob-logo">
+      <span class="uob-mark logo-panel"><img class="official-uob-logo" src="https://www.birmingham.ac.uk/Images/logos/uob/uob-uk-logo-light.svg" alt="University of Birmingham" onerror="this.closest('.uob-mark').classList.add('logo-failed');"><span class="uob-fallback-mark" aria-label="University of Birmingham"><span class="uob-fallback-crest">UoB</span><span><span class="uob-fallback-text">University of Birmingham</span><span class="uob-fallback-subtext">Birmingham Business School</span></span></span></span>
+      <div class="logo-divider"></div>
+      <div class="logo-text">
+        <div class="uni">Birmingham Business School</div>
+        <div class="school">Executive Education</div>
+      </div>
+    </div>
+    <span class="cover-tag">Professional Development Programme</span>
+  </div>
+
+  <div class="cover-content">
+    <div class="cover-eyebrow">Professional Development Programme</div>
+    <h1 class="cover-title">Applied <span>Agentic AI</span> for Business Transformation</h1>
+    <p class="cover-subtitle">Equipping business leaders to harness Generative and Agentic AI — driving strategic innovation, responsible adoption, and measurable organisational value.</p>
+    <div class="cover-pills">
+      <span class="pill filled">8 Weeks Online</span>
+      <span class="pill">8–10 hrs / week</span>
+      <span class="pill">No prior AI experience required</span>
+      <span class="pill">UoB Certificate of Completion</span>
+    </div>
+    <div class="cover-actions" aria-label="Primary actions">
+      <a class="hero-btn primary" href="#curriculum">Explore Curriculum</a>
+      <a class="hero-btn secondary" href="#readiness">Check AI Readiness</a>
+      <a class="hero-btn secondary" href="mailto:a.mandal@bham.ac.uk?subject=Applied%20Agentic%20AI%20programme%20enquiry">Enquire Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ QUOTE ═══ -->
+<div class="quote-band">
+  <div class="quote-mark">"</div>
+  <div>
+    <p class="quote-text">AI is not a distant horizon — it is reshaping industries right now. The leaders who will define tomorrow are those who act with intelligence, ethics, and purpose today.</p>
+    <p class="quote-attr">Programme Director, Birmingham Business School</p>
+  </div>
+</div>
+
+<!-- ═══ INTERACTIVE READINESS CHECK ═══ -->
+<section class="interactive-section" id="readiness">
+  <div class="interactive-wrapper">
+    <div>
+      <div class="section-label">Interactive Tool</div>
+      <h2 class="section-title">AI Readiness Snapshot</h2>
+      <p class="interactive-copy">Use this quick diagnostic to identify where your organisation may need stronger AI capability. Select the statements that are currently true. Your score updates instantly and produces a recommended learning focus.</p>
+      <div class="readiness-actions">
+        <button type="button" class="mini-btn" id="selectAllReadiness">Select All</button>
+        <button type="button" class="mini-btn ghost" id="resetReadiness">Reset</button>
+      </div>
+    </div>
+    <div class="readiness-card" aria-live="polite">
+      <div class="score-ring"><span id="readinessScore">0</span><small>/100</small></div>
+      <p class="score-label" id="readinessLabel">Start the assessment</p>
+      <p class="score-detail" id="readinessDetail">Select the capabilities your organisation already has in place.</p>
+    </div>
+  </div>
+  <div class="check-grid" id="readinessChecks">
+    <label class="check-card"><input type="checkbox" data-score="15"><span>We have identified business functions where AI could create measurable value.</span></label>
+    <label class="check-card"><input type="checkbox" data-score="15"><span>We understand the difference between generative AI, copilots, and agentic workflows.</span></label>
+    <label class="check-card"><input type="checkbox" data-score="15"><span>We have an AI governance process covering data, ethics, risk, and accountability.</span></label>
+    <label class="check-card"><input type="checkbox" data-score="15"><span>We can evaluate AI vendors, platforms, and models against strategic fit and cost.</span></label>
+    <label class="check-card"><input type="checkbox" data-score="20"><span>We have piloted AI solutions and know how to move from proof of concept to scaled adoption.</span></label>
+    <label class="check-card"><input type="checkbox" data-score="20"><span>We have a clear roadmap for skills, operating model, change management, and ROI tracking.</span></label>
+  </div>
+</section>
+
+<!-- ═══ WHY ═══ -->
+<section class="why-section" id="why">
+  <div class="section-label">The Imperative</div>
+  <h2 class="section-title">Why Elevate Your AI Strategy Now?</h2>
+  <p style="max-width:680px; font-size:17px; color:var(--grey-dark); line-height:1.8;">
+    The window for competitive advantage through AI is open — but not indefinitely. Organisations that build internal AI capability today will shape their sectors for decades. Those that wait will face the cost of catching up.
+  </p>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-num"><span>79</span>%</div>
+      <p class="stat-desc">of global executives believe AI will significantly transform their industry within three years — yet few feel prepared to lead that shift.</p>
+      <p class="stat-source">Source: PwC Global AI Study</p>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">£<span>100</span>tn</div>
+      <p class="stat-desc">in economic value is projected to flow from digital transformation by 2025, rewarding organisations with robust AI strategies and talent.</p>
+      <p class="stat-source">Source: World Economic Forum</p>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num"><span>76</span>%</div>
+      <p class="stat-desc">of executives agree that organisations must redesign how technology and people interact — placing human-centred AI design at the core of strategy.</p>
+      <p class="stat-source">Source: Accenture</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="about-section" id="programme">
+  <div class="section-label">The Programme</div>
+  <h2 class="section-title">Transformative Learning,<br>Grounded in Business Reality</h2>
+  <div class="about-grid">
+    <div>
+      <div class="about-text">
+        <p>In an era rapidly reshaped by artificial intelligence, strategic leadership demands more than awareness — it demands action. Birmingham Business School's <em>Applied Agentic AI for Business Transformation</em> equips decision-makers with the insights, frameworks, and practical tools to lead AI-driven change across their organisations.</p>
+        <p>Combining Birmingham's academic rigour with applied industry relevance, this 8-week online programme takes mid-to-senior professionals from foundational AI concepts through to governance, ethics, and the construction of an executive-ready AI adoption roadmap.</p>
+        <p>Each week features hands-on mini-projects, giving participants a safe, structured environment to prototype AI use cases relevant to their own organisational context — with expert facilitator support throughout.</p>
+      </div>
+      <div class="about-specs">
+        <div class="spec-item">
+          <div class="spec-val">8</div>
+          <div class="spec-label">Weeks</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-val">8–10</div>
+          <div class="spec-label">Hours / Week</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-val">100%</div>
+          <div class="spec-label">Online</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-val">UoB</div>
+          <div class="spec-label">Certificate</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="about-points">
+        <li>Understand the building blocks of Generative and Agentic AI, how they differ, and which business functions they can transform</li>
+        <li>Design AI-integrated digital strategies using cloud infrastructure, APIs, and enterprise systems</li>
+        <li>Apply AI through hands-on mini-projects — generating text, images, audio, and data insights in real business contexts</li>
+        <li>Plan for ethical considerations, legal compliance, and governance risks including deepfakes, prompt injection, and regulatory frameworks</li>
+        <li>Build and present an executive-ready AI adoption roadmap tailored to your organisation's needs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LEARNING OUTCOMES ═══ -->
+<section class="outcomes-section" id="outcomes">
+  <div class="section-label">What You Will Achieve</div>
+  <h2 class="section-title">Learning Outcomes</h2>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-num">01</div>
+      <div class="outcome-title">AI Fundamentals & Architecture</div>
+      <p class="outcome-desc">Explain the foundations of Generative and Agentic AI, including architectures, use cases, and future potential across industries.</p>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">02</div>
+      <div class="outcome-title">Business Value Assessment</div>
+      <p class="outcome-desc">Assess where and how AI can improve business outcomes — from operational workflows and supply chains to customer engagement and product development.</p>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">03</div>
+      <div class="outcome-title">Digital Ecosystem Integration</div>
+      <p class="outcome-desc">Integrate AI systems into existing digital ecosystems using cloud infrastructure, APIs, and enterprise platforms like Microsoft Azure and Google Cloud.</p>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">04</div>
+      <div class="outcome-title">Strategic Platform Evaluation</div>
+      <p class="outcome-desc">Evaluate AI platforms for strategic fit, capabilities, cost-efficiency, and risk — making confident investment and vendor decisions.</p>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">05</div>
+      <div class="outcome-title">Agent-Based Solutions</div>
+      <p class="outcome-desc">Develop and deploy agent-based solutions that orchestrate multi-step workflows, enhance automation, and reduce manual overhead at scale.</p>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">06</div>
+      <div class="outcome-title">Governance & Compliance</div>
+      <p class="outcome-desc">Navigate governance and compliance challenges, including ethical AI deployment and regulatory frameworks such as GDPR, HIPAA, and the EU AI Act.</p>
+    </div>
+    <div class="outcome-card" style="grid-column: span 2;">
+      <div class="outcome-num">07</div>
+      <div class="outcome-title">Strategic AI Roadmap</div>
+      <p class="outcome-desc">Build a comprehensive AI adoption roadmap — short, medium, and long-term — culminating in an actionable executive-level plan or pitch presentation tailored to your organisation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KEY TAKEAWAYS ═══ -->
+<section class="takeaways-section" id="benefits">
+  <div class="section-label">Programme Benefits</div>
+  <h2 class="section-title">What You Will Walk Away With</h2>
+  <div class="takeaways-grid">
+    <div class="takeaway-card">
+      <div class="takeaway-num">01</div>
+      <div class="takeaway-title">Lead with Confidence in the Age of AI</div>
+      <p class="takeaway-desc">Understand the strategic implications of Generative and Agentic AI and how to integrate them into your business models, customer journeys, and operations.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="takeaway-num">02</div>
+      <div class="takeaway-title">Hands-On Exposure to Transformative Tools</div>
+      <p class="takeaway-desc">Gain practical experience with industry-leading platforms including ChatGPT, Microsoft Copilot, and open-source AI frameworks — learning to evaluate, prototype, and deploy solutions.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="takeaway-num">03</div>
+      <div class="takeaway-title">Drive Responsible Innovation</div>
+      <p class="takeaway-desc">Develop a clear command of AI ethics, bias mitigation, compliance frameworks (GDPR, EU AI Act), and governance best practices for your sector.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="takeaway-num">04</div>
+      <div class="takeaway-title">Communicate AI Value to the Board</div>
+      <p class="takeaway-desc">Learn to articulate AI's business potential in clear, actionable language that builds stakeholder confidence and secures investment from leadership.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="takeaway-num">05</div>
+      <div class="takeaway-title">Deliver a Strategic AI Roadmap</div>
+      <p class="takeaway-desc">Walk away with an executive-ready AI adoption plan or strategic presentation, tailored to your organisation's goals, capabilities, and risk appetite.</p>
+    </div>
+    <div class="takeaway-card" style="background: var(--navy); border-top-color: var(--gold);">
+      <div class="takeaway-num" style="color:var(--gold-light);">06</div>
+      <div class="takeaway-title" style="color:var(--white);">Join the Birmingham Business School Alumni Network</div>
+      <p class="takeaway-desc" style="color:rgba(255,255,255,0.7);">Gain access to a global network of over 100,000 UoB alumni and connect with peers navigating the same AI challenges across industries and geographies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PARTICIPANT PROFILE ═══ -->
+<section class="participant-section" id="audience">
+  <div class="section-label">Who Should Attend</div>
+  <h2 class="section-title">Designed for Decision-Makers</h2>
+  <p class="participant-intro">This programme is built for professionals who recognise the strategic urgency of AI and want to lead its adoption effectively. It is tailored for those who may not build AI tools themselves — but are responsible for choosing, funding, governing, or operationalising them.</p>
+  <div class="participant-grid">
+    <div class="profile-card">
+      <div class="profile-icon">👔</div>
+      <div>
+        <div class="profile-title">C-Suite & Senior Executives</div>
+        <p class="profile-desc">CEOs, CIOs, CTOs, CMOs and COOs seeking to make informed, forward-thinking decisions about AI integration across their organisations.</p>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-icon">📊</div>
+      <div>
+        <div class="profile-title">Business Leaders & Functional Heads</div>
+        <p class="profile-desc">Directors and heads of operations, strategy, marketing, finance, and product driving digital innovation in their organisations.</p>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-icon">🏗️</div>
+      <div>
+        <div class="profile-title">Managers & Team Leads</div>
+        <p class="profile-desc">Those responsible for modernising workflows, aligning teams with technology change, and embedding AI into day-to-day business processes.</p>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-icon">⚙️</div>
+      <div>
+        <div class="profile-title">Technical Professionals</div>
+        <p class="profile-desc">Engineers and technical specialists looking to bridge the gap between building AI systems and leading organisational transformation efforts.</p>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-icon">🌐</div>
+      <div>
+        <div class="profile-title">Consultants & Advisors</div>
+        <p class="profile-desc">Professionals helping clients navigate AI-powered change in complex organisational contexts across multiple industries.</p>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-icon">🏥</div>
+      <div>
+        <div class="profile-title">Public Sector & Healthcare Leaders</div>
+        <p class="profile-desc">Leaders in regulated industries seeking to understand how AI can improve service delivery while maintaining compliance and public trust.</p>
+      </div>
+    </div>
+  </div>
+  <div class="no-prereq">
+    <strong>No Prior AI Experience Required</strong>
+    This programme assumes no prior experience with AI tools or programming. A strategic mindset and openness to hands-on experimentation are all that is needed to gain maximum benefit.
+  </div>
+</section>
+
+<!-- ═══ CURRICULUM ═══ -->
+<section class="curriculum-section" id="curriculum">
+  <div class="section-label">Programme Structure</div>
+  <h2 class="section-title">Course Outline</h2>
+  <div class="modules-grid">
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-num">1</div>
+        <div class="module-title">Foundations of Generative and Agentic AI</div>
+      </div>
+      <ul class="module-topics">
+        <li>Generative AI fundamentals and large language models</li>
+        <li>AI chatbots: past, present, and future business applications</li>
+        <li>Cost-optimised models and performance trade-offs</li>
+        <li>Multimedia and language interaction models</li>
+        <li>Advanced applications of Generative AI tools</li>
+      </ul>
+    </div>
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-num">2</div>
+        <div class="module-title">The Rise of Agentic AI and Emerging Platforms</div>
+      </div>
+      <ul class="module-topics">
+        <li>Emerging agentic AI platforms and ecosystems</li>
+        <li>Single vs. multi-agent architectures</li>
+        <li>Open-source vs. closed-source AI systems</li>
+        <li>Evaluating platforms for strategic fit and risk</li>
+        <li>Live demonstrations and hands-on exploration</li>
+      </ul>
+    </div>
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-num">3</div>
+        <div class="module-title">Connecting Agents to Digital Ecosystems</div>
+      </div>
+      <ul class="module-topics">
+        <li>Building agents into existing enterprise workflows</li>
+        <li>Integrating AI with ERP, CRM, and cloud platforms</li>
+        <li>APIs, data pipelines, and system connectors</li>
+        <li>Edge cases of agent integration in real organisations</li>
+        <li>Empathy and response-tuning for customer-facing agents</li>
+      </ul>
+    </div>
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-num">4</div>
+        <div class="module-title">Agent Risks, Disinformation, and Systemic Impact</div>
+      </div>
+      <ul class="module-topics">
+        <li>Classic and emerging cybersecurity risks for AI</li>
+        <li>Cybersecurity considerations for agentic ecosystems</li>
+        <li>Limitations of agent perception and error correction</li>
+        <li>Addressing deepfakes and prompt injection vulnerabilities</li>
+        <li>Reputational and systemic risks of AI deployment</li>
+      </ul>
+    </div>
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-num">5</div>
+        <div class="module-title">AI Agents by Business Function</div>
+      </div>
+      <ul class="module-topics">
+        <li>The maturity cycle of agentic implementation (crawl–walk–run)</li>
+        <li>AI in product development: prototyping, QA, and launch automation</li>
+        <li>Functional deployments: HR bots, finance advisors, IT co-pilots</li>
+        <li>Centralised vs. embedded agent architectures in the enterprise</li>
+        <li>ROI measurement and business case development</li>
+      </ul>
+    </div>
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-num">6</div>
+        <div class="module-title">The Last Mile — From Pilot to Practice</div>
+      </div>
+      <ul class="module-topics">
+        <li>Voice agents: synthesis, phone systems, and real-time applications</li>
+        <li>Why pilots succeed but deployments stall — and how to fix it</li>
+        <li>Internal resistance and change management strategies</li>
+        <li>Monitoring agent performance: metrics, KPIs, and feedback loops</li>
+        <li>Scaling successful pilots into organisation-wide adoption</li>
+      </ul>
+    </div>
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-num">7</div>
+        <div class="module-title">Governance, Compliance, and Agent Testing</div>
+      </div>
+      <ul class="module-topics">
+        <li>Regulatory overview: GDPR, CCPA, HIPAA, and the EU AI Act</li>
+        <li>Testing agent behaviour: sandboxing, A/B testing, safety checks</li>
+        <li>Agent speed vs. oversight: where to insert guardrails</li>
+        <li>Documentation, audit trails, and compliance readiness</li>
+        <li>Building an AI ethics committee and governance charter</li>
+      </ul>
+    </div>
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-num">8</div>
+        <div class="module-title">Strategy Capstone — Leading the Agentic Future</div>
+      </div>
+      <ul class="module-topics">
+        <li>Strategic roadmap development: short-, medium-, and long-term</li>
+        <li>Team structure, vendor selection, and internal capability building</li>
+        <li>Organisational culture and leadership for AI adoption</li>
+        <li>Executive presentation: AI adoption plan or strategic pitch</li>
+        <li>Maturity assessment and change management for sustained success</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:28px; font-size:12px; color:rgba(255,255,255,0.3); font-style:italic;">* Modules and curriculum are subject to change. Live examples and case studies are updated each cohort to reflect the latest developments in the field.</p>
+</section>
+
+<!-- ═══ CERTIFICATE ═══ -->
+<section class="cert-section" id="certificate">
+  <div class="section-label" style="justify-content:center;">Recognition</div>
+  <h2 class="section-title" style="text-align:center;">Certificate of Completion</h2>
+  <div class="cert-box">
+    <div style="display:flex;justify-content:center;margin:0 auto 22px;"><span class="uob-mark logo-panel"><img class="official-uob-logo" src="https://www.birmingham.ac.uk/Images/logos/uob/uob-uk-logo-light.svg" alt="University of Birmingham" onerror="this.closest('.uob-mark').classList.add('logo-failed');"><span class="uob-fallback-mark" aria-label="University of Birmingham"><span class="uob-fallback-crest">UoB</span><span><span class="uob-fallback-text">University of Birmingham</span><span class="uob-fallback-subtext">Birmingham Business School</span></span></span></span></div>
+    <div class="cert-title">University of Birmingham<br>Professional Certificate</div>
+    <p class="cert-desc">All participants who successfully complete <em>Applied Agentic AI for Business Transformation</em> will be awarded a University of Birmingham Birmingham Business School Certificate of Completion, signifying mastery of AI strategy, agentic systems, and responsible AI governance.</p>
+    <p class="cert-note">Continuing Professional Development (CPD) hours are awarded on completion. Participants should consult their professional body or licensing authority regarding recognition of CPD hours towards formal requirements. A CPD accreditation form must be completed to claim hours.</p>
+  </div>
+</section>
+
+<!-- ═══ CORPORATE ═══ -->
+<section class="corporate-section" id="corporate">
+  <div class="section-label">Organisational Learning</div>
+  <h2 class="section-title">Corporate & Team Programmes</h2>
+  <p style="max-width:600px; font-size:16px; color:var(--grey-dark); line-height:1.7; margin-bottom:10px;">Birmingham Business School partners with organisations to deliver cohort-based AI programmes that build competitive capability across entire leadership teams.</p>
+  <div class="corporate-grid">
+    <div class="corp-card">
+      <div class="corp-num"><span>01</span></div>
+      <div class="corp-title">Standard Team Enrolment</div>
+      <p class="corp-desc">Teams or groups of 10 or more participants qualify for preferential group pricing and dedicated cohort support on any open-enrolment programme.</p>
+    </div>
+    <div class="corp-card">
+      <div class="corp-num"><span>02</span></div>
+      <div class="corp-title">Custom Programmes</div>
+      <p class="corp-desc">Bespoke AI leadership programmes designed around your organisation's specific sector, strategic challenges, technology landscape, and cultural context.</p>
+    </div>
+    <div class="corp-card">
+      <div class="corp-num"><span>03</span></div>
+      <div class="corp-title">Private Cohorts</div>
+      <p class="corp-desc">Run a dedicated cohort exclusively for your organisation's participants — maintaining confidentiality while enabling rich peer learning within your own team.</p>
+    </div>
+  </div>
+  <p style="margin-top:36px; font-size:14px; color:var(--grey-dark);">To discuss corporate programme options, contact: <strong>a.mandal@bham.ac.uk</strong></p>
+</section>
+
+<!-- ═══ ALUMNI ═══ -->
+<section class="alumni-section" id="alumni">
+  <div class="section-label">Community & Network</div>
+  <h2 class="section-title">Benefits of the Birmingham Alumni Community</h2>
+  <ul class="alumni-benefits">
+    <li>
+      <div class="benefit-num">1</div>
+      <div class="benefit-text"><strong>15% Discount on Future Programmes</strong> Receive a 15% discount on all Birmingham Business School Executive Education programmes, including in-person intensives and online short courses.</div>
+    </li>
+    <li>
+      <div class="benefit-num">2</div>
+      <div class="benefit-text"><strong>Extended Platform Access</strong> Continued access to the virtual learning campus and all course materials for six months after programme completion.</div>
+    </li>
+    <li>
+      <div class="benefit-num">3</div>
+      <div class="benefit-text"><strong>Priority Access to New Programmes</strong> First notification of new Executive Education offerings, flagship events, and guest speaker sessions from Birmingham Business School.</div>
+    </li>
+    <li>
+      <div class="benefit-num">4</div>
+      <div class="benefit-text"><strong>Birmingham Executive LinkedIn Network</strong> Invitation to the exclusive Birmingham Business School Executive Education LinkedIn community, connecting you with peers from across cohorts and geographies.</div>
+    </li>
+    <li>
+      <div class="benefit-num">5</div>
+      <div class="benefit-text"><strong>Global Alumni Network</strong> Access to the wider University of Birmingham alumni community — over 100,000 professionals across 170 countries — including industry-specific and regional alumni groups.</div>
+    </li>
+  </ul>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer id="contact">
+  <div class="footer-logo">
+    <div style="margin-bottom:12px;"><span class="uob-mark logo-panel"><img class="official-uob-logo" src="https://www.birmingham.ac.uk/Images/logos/uob/uob-uk-logo-light.svg" alt="University of Birmingham" onerror="this.closest('.uob-mark').classList.add('logo-failed');"><span class="uob-fallback-mark" aria-label="University of Birmingham"><span class="uob-fallback-crest">UoB</span><span><span class="uob-fallback-text">University of Birmingham</span></span></span></span></div>
+    <div class="school" style="font-size:12px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Birmingham Business School</div>
+    <p style="margin-top:16px; font-size:13px; color:rgba(255,255,255,0.4); line-height:1.7;">Executive Education<br>Edgbaston, Birmingham<br>B15 2TT, United Kingdom</p>
+  </div>
+  <div class="footer-contact">
+    <h4>Get in Touch</h4>
+    <p>
+      Programme Enquiries<br>
+      <a href="mailto:a.mandal@bham.ac.uk">a.mandal@bham.ac.uk</a><br><br>
+      <a href="https://www.birmingham.ac.uk/business">www.birmingham.ac.uk/business</a>
+    </p>
+  </div>
+  <div class="footer-cta">
+    <p style="font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:20px; text-align:right; line-height:1.6;">Ready to lead your organisation's AI transformation?</p>
+    <a href="mailto:a.mandal@bham.ac.uk?subject=Applied%20Agentic%20AI%20programme%20enquiry" class="cta-btn">Enquire Now</a>
+    <p style="margin-top:14px; font-size:11px; color:rgba(255,255,255,0.3); text-align:right;">Use Save / Print to download as PDF</p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 University of Birmingham. All rights reserved.</span>
+  <span>Birmingham Business School — Triple Accredited: AACSB · AMBA · EQUIS</span>
+</div>
+
+
+<script>
+(function () {
+  const progressBar = document.getElementById('progressBar');
+  const stickyNav = document.querySelector('.sticky-nav');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  const printBtn = document.getElementById('printBtn');
+
+  function updateProgress() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + '%';
+    if (stickyNav) stickyNav.classList.toggle('visible', scrollTop > 220);
+    const backTop = document.getElementById('backToTop');
+    if (backTop) backTop.classList.toggle('visible', scrollTop > 700);
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+  if (printBtn) printBtn.addEventListener('click', () => window.print());
+
+  const sectionIds = ['why','programme','readiness','curriculum','certificate','contact'];
+  const navAnchors = Array.from(document.querySelectorAll('.nav-links a'));
+  const sectionMap = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  const activeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+  sectionMap.forEach(sec => activeObserver.observe(sec));
+
+  const revealTargets = document.querySelectorAll('section, .quote-band, .stat-box, .outcome-card, .takeaway-card, .profile-card, .corp-card, .alumni-benefits li');
+  revealTargets.forEach(el => el.classList.add('reveal-ready'));
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealTargets.forEach(el => revealObserver.observe(el));
+
+  const modules = Array.from(document.querySelectorAll('.module-card'));
+  modules.forEach((card, index) => {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-expanded', index === 0 ? 'true' : 'false');
+    if (index === 0) card.classList.add('open');
+    function toggleCard() {
+      const isOpen = card.classList.contains('open');
+      modules.forEach(other => { other.classList.remove('open'); other.setAttribute('aria-expanded', 'false'); });
+      if (!isOpen) { card.classList.add('open'); card.setAttribute('aria-expanded', 'true'); }
+    }
+    card.addEventListener('click', toggleCard);
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleCard(); }
+    });
+  });
+
+  const checkWrap = document.getElementById('readinessChecks');
+  const scoreEl = document.getElementById('readinessScore');
+  const labelEl = document.getElementById('readinessLabel');
+  const detailEl = document.getElementById('readinessDetail');
+  const selectAll = document.getElementById('selectAllReadiness');
+  const reset = document.getElementById('resetReadiness');
+  const scoreRing = document.querySelector('.score-ring');
+
+  function updateReadiness() {
+    if (!checkWrap) return;
+    const checks = Array.from(checkWrap.querySelectorAll('input[type="checkbox"]'));
+    let score = 0;
+    checks.forEach(input => {
+      const card = input.closest('.check-card');
+      if (input.checked) {
+        score += Number(input.dataset.score || 0);
+        if (card) card.classList.add('selected');
+      } else if (card) card.classList.remove('selected');
+    });
+    if (scoreEl) scoreEl.textContent = score;
+    if (scoreRing) scoreRing.style.background = `conic-gradient(var(--gold) ${score * 3.6}deg, rgba(255,255,255,.12) ${score * 3.6}deg)`;
+    let label = 'Foundation stage';
+    let detail = 'The programme will help you build a common language for AI, identify priority use cases, and design a practical first roadmap.';
+    if (score >= 35) {
+      label = 'Building capability';
+      detail = 'You have useful foundations. Focus next on governance, platform evaluation, workflow design, and measurable implementation.';
+    }
+    if (score >= 70) {
+      label = 'Scale-ready organisation';
+      detail = 'You are well positioned to move from pilots to scaled adoption. The programme can sharpen executive governance, agent design, and strategic ROI.';
+    }
+    if (score >= 90) {
+      label = 'Advanced AI leader';
+      detail = 'Your organisation is highly prepared. Use the programme to benchmark practice, stress-test governance, and refine an executive-level transformation roadmap.';
+    }
+    if (labelEl) labelEl.textContent = label;
+    if (detailEl) detailEl.textContent = detail;
+  }
+  if (checkWrap) {
+    checkWrap.addEventListener('change', updateReadiness);
+    updateReadiness();
+  }
+  if (selectAll && checkWrap) selectAll.addEventListener('click', () => { checkWrap.querySelectorAll('input').forEach(i => i.checked = true); updateReadiness(); });
+  if (reset && checkWrap) reset.addEventListener('click', () => { checkWrap.querySelectorAll('input').forEach(i => i.checked = false); updateReadiness(); });
+
+  const backToTop = document.createElement('button');
+  backToTop.className = 'back-to-top';
+  backToTop.id = 'backToTop';
+  backToTop.type = 'button';
+  backToTop.setAttribute('aria-label', 'Back to top');
+  backToTop.textContent = '↑';
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  document.body.appendChild(backToTop);
+})();
+</script>
+
+</body>
+</html>
